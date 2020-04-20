@@ -12,27 +12,31 @@ public class CalculadoraSalario {
 	}
 
 	private double calcularInss(double salarioBase) {
+		double resultado;
+
 		if (salarioBase <= 1500.00) {
-			return salarioBase - salarioBase * 0.08;
-		} else if (salarioBase > 1500.00 && salarioBase < 4000.00) {
-			return salarioBase - salarioBase * 0.09;
-		} else if (salarioBase > 4000.00) {
-			return salarioBase - salarioBase * 0.11;
+			resultado = salarioBase - salarioBase * 0.08;
+		} else if (salarioBase < 4000.00) {
+			resultado = salarioBase - salarioBase * 0.09;
+		} else {
+			resultado = salarioBase - salarioBase * 0.11;
 		}
 
-		return 0.0;
+		return resultado;
 	}
 
 	private double calcularIrrf(double salarioComDescontoInss) {
-		if (salarioComDescontoInss <= 3000.00 && salarioComDescontoInss >= 1039.00) {
-			return salarioComDescontoInss;
+		double resultado = salarioComDescontoInss;
+
+		if(salarioComDescontoInss < 1039.00) {
+			return 0.0;
 		} else if (salarioComDescontoInss > 3000.00 && salarioComDescontoInss <= 6000.00) {
-			return salarioComDescontoInss - salarioComDescontoInss * 0.075;
+			resultado = salarioComDescontoInss - salarioComDescontoInss * 0.075;
 		} else if (salarioComDescontoInss > 6000.00) {
-			return salarioComDescontoInss - salarioComDescontoInss * 0.15;
+			resultado = salarioComDescontoInss - salarioComDescontoInss * 0.15;
 		}
 
-		return 0.0;
+		return resultado;
 	}
 
 }
